@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PodClip - Podcast to Clip Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-podcast"></i>
+            <span>PodClip</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#about">About</a></li>
+            <li><button class="login-btn" onclick="openModal()"><i class="fas fa-sign-in-alt"></i> Login</button></li>
+            <li><button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">🚀 AI-Powered Technology</span>
+                <h1>Transform Podcasts into <span class="gradient-text">Viral Clips</span></h1>
+                <p class="highlight">Extract the best moments from your podcasts and turn them into engaging clips for social media in seconds.</p>
+                <p>AI-powered technology automatically identifies the most shareable content from your episodes.</p>
+                <p>Grow your audience, increase engagement, and save hours of editing time.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="10000">0</h3>
+                        <p>Happy Users</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="50000">0</h3>
+                        <p>Clips Created</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="99">0</h3>
+                        <p>% Satisfaction</p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="cta-button primary">
+                        Get Started Free <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="cta-button secondary">
+                        <i class="fas fa-play-circle"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop" alt="Podcast Recording">
+                <div class="floating-card card-1">
+                    <i class="fas fa-microphone"></i>
+                    <span>Recording...</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-chart-line"></i>
+                    <span>+300% Engagement</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-clock"></i>
+                    <span>Save 10hrs/week</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <h2 class="section-title">Upload & Download Your Clips</h2>
+        
+        <div class="process-steps">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <i class="fas fa-upload"></i>
+                <h3>Upload</h3>
+                <p>Upload your podcast</p>
+            </div>
+            <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <i class="fas fa-magic"></i>
+                <h3>Process</h3>
+                <p>AI extracts best moments</p>
+            </div>
+            <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <i class="fas fa-download"></i>
+                <h3>Download</h3>
+                <p>Get your viral clips</p>
+            </div>
+        </div>
+
+        <div class="upload-container">
+            <div class="upload-box">
+                <h3><i class="fas fa-cloud-upload-alt"></i> Upload Video</h3>
+                <div class="upload-area" onclick="document.getElementById('videoUpload').click()">
+                    <i class="fas fa-video"></i>
+                    <p>Click to upload your podcast video</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">Supports MP4, MOV, AVI (Max 2GB)</p>
+                    <div class="upload-progress" style="display: none;">
+                        <div class="progress-bar"></div>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+                <input type="file" id="videoUpload" class="file-input" accept="video/*">
+                
+                <div class="download-box processing-box">
+                    <div class="spinner"></div>
+                    <h4><i class="fas fa-magic"></i> AI Processing...</h4>
+                    <p>Analyzing your podcast for the best moments</p>
+                </div>
+            </div>
+
+            <div class="upload-box">
+                <h3><i class="fas fa-download"></i> Download Clips</h3>
+                <div class="clips-list">
+                    <div class="clip-item">
+                        <div class="clip-thumbnail">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="clip-info">
+                            <h4>Best Moment</h4>
+                            <p>Duration: 0:45 • 1080p</p>
+                        </div>
+                        <button class="download-btn-small"><i class="fas fa-download"></i></button>
+                    </div>
+                    <div class="clip-item">
+                        <div class="clip-thumbnail">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="clip-info">
+                            <h4>Highlight Reel</h4>
+                            <p>Duration: 1:20 • 1080p</p>
+                        </div>
+                        <button class="download-btn-small"><i class="fas fa-download"></i></button>
+                    </div>
+                    <div class="clip-item">
+                        <div class="clip-thumbnail">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="clip-info">
+                            <h4>Viral Snippet</h4>
+                            <p>Duration: 0:30 • 1080p</p>
+                        </div>
+                        <button class="download-btn-small"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+                
+                <button class="download-btn download-all">
+                    <i class="fas fa-download"></i> Download All Clips
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <p class="section-subtitle">Everything you need to create viral podcast clips</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI-Powered Detection</h3>
+                <p>Advanced AI automatically detects the most engaging moments in your podcast, saving you hours of manual editing.</p>
+                <div class="feature-badge">New</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Convert hour-long podcasts into shareable clips in minutes. Get your content ready for social media instantly.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Smart Editing</h3>
+                <p>Automatic subtitles, captions, and formatting optimized for Instagram, TikTok, YouTube Shorts, and more.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Advanced Analytics</h3>
+                <p>Track performance of your clips across platforms and understand what resonates with your audience.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Custom Branding</h3>
+                <p>Add your logo, custom colors, and brand elements to maintain consistency across all your clips.</p>
+                <div class="feature-badge popular">Popular</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Multi-Format Export</h3>
+                <p>Export in various formats and aspect ratios perfect for any social media platform - vertical, square, or landscape.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-closed-captioning"></i>
+                </div>
+                <h3>Auto Subtitles</h3>
+                <p>Automatically generate accurate subtitles in multiple languages with customizable styling and positioning.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Team Collaboration</h3>
+                <p>Work together with your team, share projects, and streamline your content creation workflow.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Cloud Storage</h3>
+                <p>All your clips are safely stored in the cloud, accessible anytime, anywhere from any device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-subtitle">Flexible pricing for creators of all sizes</p>
+        
+        <div class="pricing-toggle">
+            <div class="toggle-btn">
+                <button class="active" onclick="togglePricing('monthly')">Monthly</button>
+                <button onclick="togglePricing('yearly')">Yearly <span class="save-badge">Save 20%</span></button>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$19<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 10 hours of content/month</li>
+                    <li><i class="fas fa-check"></i> Up to 50 clips</li>
+                    <li><i class="fas fa-check"></i> 720p quality</li>
+                    <li><i class="fas fa-check"></i> Basic analytics</li>
+                    <li><i class="fas fa-check"></i> Auto subtitles</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Custom branding</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Team collaboration</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+
+            <div class="pricing-card popular">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="offer-badge">🔥 50% OFF First Month</div>
+                <h3>Professional</h3>
+                <div class="price">$49<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 50 hours of content/month</li>
+                    <li><i class="fas fa-check"></i> Unlimited clips</li>
+                    <li><i class="fas fa-check"></i> 1080p HD quality</li>
+                    <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    <li><i class="fas fa-check"></i> Auto subtitles (multilingual)</li>
+                    <li><i class="fas fa-check"></i> Custom branding</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Team collaboration (5 members)</li>
+                    <li><i class="fas fa-check"></i> API access</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="offer-badge student">🎓 Student Discount Available</div>
+                <h3>Enterprise</h3>
+                <div class="price">$99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Unlimited content</li>
+                    <li><i class="fas fa-check"></i> Unlimited clips</li>
+                    <li><i class="fas fa-check"></i> 4K quality</li>
+                    <li><i class="fas fa-check"></i> Advanced AI features</li>
+                    <li><i class="fas fa-check"></i> Auto subtitles (50+ languages)</li>
+                    <li><i class="fas fa-check"></i> Full custom branding</li>
+                    <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                    <li><i class="fas fa-check"></i> Unlimited team members</li>
+                    <li><i class="fas fa-check"></i> Full API access</li>
+                    <li><i class="fas fa-check"></i> White-label option</li>
+                </ul>
+                <button class="pricing-btn">Contact Sales</button>
+            </div>
+        </div>
+
+        <div class="student-offer">
+            <div class="student-offer-content">
+                <i class="fas fa-graduation-cap"></i>
+                <div>
+                    <h4>🎓 Special Student Offer</h4>
+                    <p>Students get 40% off on any plan! Just verify your student ID to unlock this exclusive discount.</p>
+                </div>
+                <button class="cta-button primary">Verify Student ID</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples" id="examples">
+        <h2 class="section-title">Example Clips</h2>
+        <p class="section-subtitle">See what our users are creating</p>
+        
+        <div class="examples-grid">
+            <div class="example-card">
+                <div class="example-image">
+                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=250&fit=crop" alt="Podcast Example 1">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration-badge">0:45</span>
+                </div>
+                <div class="example-info">
+                    <h4>Marketing Insights</h4>
+                    <p>Viral moment from marketing podcast</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 50K views</span>
+                        <span><i class="fas fa-heart"></i> 2.5K likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-image">
+                    <div class="example-media gradient-bg-1">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <span class="duration-badge">1:20</span>
+                </div>
+                <div class="example-info">
+                    <h4>Tech Talk Highlight</h4>
+                    <p>Key discussion point</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 75K views</span>
+                        <span><i class="fas fa-heart"></i> 4.2K likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-image">
+                    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=250&fit=crop" alt="Podcast Example 3">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration-badge">2:00</span>
+                </div>
+                <div class="example-info">
+                    <h4>Interview Moment</h4>
+                    <p>Emotional story excerpt</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 120K views</span>
+                        <span><i class="fas fa-heart"></i> 8.7K likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-image">
+                    <div class="example-media gradient-bg-2">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <span class="duration-badge">0:30</span>
+                </div>
+                <div class="example-info">
+                    <h4>Comedy Snippet</h4>
+                    <p>Funny moment</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 200K views</span>
+                        <span><i class="fas fa-heart"></i> 15K likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-image">
+                    <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=250&fit=crop" alt="Podcast Example 5">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration-badge">1:15</span>
+                </div>
+                <div class="example-info">
+                    <h4>Educational Content</h4>
+                    <p>Quick tip</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 95K views</span>
+                        <span><i class="fas fa-heart"></i> 6.3K likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-image">
+                    <div class="example-media gradient-bg-3">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <span class="duration-badge">0:55</span>
+                </div>
+                <div class="example-info">
+                    <h4>Motivational Quote</h4>
+                    <p>Inspirational moment</p>
+                    <div class="example-stats">
+                        <span><i class="fas fa-eye"></i> 180K views</span>
+                        <span><i class="fas fa-heart"></i> 12K likes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">What Our Users Say</h2>
+        <p class="section-subtitle">Join thousands of satisfied podcasters</p>
+        
+        <div class="review-slider">
+            <button class="slider-btn prev" onclick="changeReview(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="review-wrapper">
+                <div class="review-container" id="reviewContainer">
+                    <div class="review-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"PodClip has completely transformed how I share my podcast content. What used to take hours now takes minutes. The AI is incredibly accurate at finding the best moments!"</p>
+                        <div class="review-footer">
+                            <div class="review-avatar">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="John Doe">
+                            </div>
+                            <div class="review-info">
+                                <h4>John Doe</h4>
+                                <p>Tech Podcast Host</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"As a content creator, time is money. PodClip saves me so much time and the clips perform incredibly well on social media. My engagement has increased by 300%!"</p>
+                        <div class="review-footer">
+                            <div class="review-avatar">
+                                <img src="https://i.pravatar.cc/150?img=45" alt="Sarah Miller">
+                            </div>
+                            <div class="review-info">
+                                <h4>Sarah Miller</h4>
+                                <p>Marketing Expert</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The student discount made this affordable for me as a college podcaster. The quality is professional-grade and the features are amazing. Highly recommend!"</p>
+                        <div class="review-footer">
+                            <div class="review-avatar">
+                                <img src="https://i.pravatar.cc/150?img=33" alt="Mike Johnson">
+                            </div>
+                            <div class="review-info">
+                                <h4>Mike Johnson</h4>
+                                <p>Student Podcaster</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Best investment for my podcast! The automatic subtitles and custom branding features make my clips look so professional. Customer support is also fantastic!"</p>
+                        <div class="review-footer">
+                            <div class="review-avatar">
+                                <img src="https://i.pravatar.cc/150?img=25" alt="Emily Wilson">
+                            </div>
+                            <div class="review-info">
+                                <h4>Emily Wilson</h4>
+                                <p>Business Coach</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Game changer! The AI knows exactly which parts will perform best. I've grown my social media following by 500% in just 3 months. Absolutely love it!"</p>
+                        <div class="review-footer">
+                            <div class="review-avatar">
+                                <img src="https://i.pravatar.cc/150?img=68" alt="David Chen">
+                            </div>
+                            <div class="review-info">
+                                <h4>David Chen</h4>
+                                <p>Entrepreneur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-btn next" onclick="changeReview(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About PodClip</h2>
+        <p class="section-subtitle">Meet the team behind the innovation</p>
+
+        <!-- Mission -->
+        <div class="mission-container">
+            <div class="mission-text">
+                <h3>Our Mission</h3>
+                <p>At PodClip, we believe that every podcast contains moments worth sharing. Our AI-powered platform helps creators extract those golden moments and turn them into engaging clips that resonate with audiences across social media.</p>
+                <p>Founded in 2024, we've helped over 10,000 podcasters amplify their reach and grow their audience exponentially.</p>
+            </div>
+            <div class="mission-image">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="Team Working">
+            </div>
+        </div>
+
+        <!-- Founders -->
+        <div class="founders-section">
+            <h3 class="founders-title">Meet the Founders</h3>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="vishal.jpeg" alt="Vishal">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h4>Vishal</h4>
+                        <p class="role">Co-Founder & CEO</p>
+                        <p class="bio">Visionary leader with 10+ years in AI and machine learning. Passionate about democratizing content creation.</p>
+                        <div class="founder-skills">
+                            <span>AI/ML</span>
+                            <span>Leadership</span>
+                            <span>Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="jatin.jpg" alt="Jatin">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h4>Jatin</h4>
+                        <p class="role">Co-Founder & CTO</p>
+                        <p class="bio">Tech wizard specializing in scalable cloud architecture and video processing technologies.</p>
+                        <div class="founder-skills">
+                            <span>Cloud</span>
+                            <span>Video Tech</span>
+                            <span>DevOps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="rishabh g.jpg" alt="Rishabh G">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h4>Rishabh G</h4>
+                        <p class="role">Co-Founder & CPO</p>
+                        <p class="bio">Product innovator focused on creating intuitive user experiences that creators love.</p>
+                        <div class="founder-skills">
+                            <span>Product</span>
+                            <span>UX/UI</span>
+                            <span>Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="rishabh s.jpeg" alt="Rishabh S">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h4>Rishabh S</h4>
+                        <p class="role">Co-Founder & CMO</p>
+                        <p class="bio">Marketing strategist helping creators amplify their voice and reach millions.</p>
+                        <div class="founder-skills">
+                            <span>Marketing</span>
+                            <span>Growth</span>
+                            <span>Community</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Values -->
+        <div class="values-section">
+            <h3 class="values-title">Our Core Values</h3>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>Pushing boundaries with AI technology</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Creator-First</h4>
+                    <p>Everything we do is for creators</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Trust</h4>
+                    <p>Your content is safe with us</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Excellence</h4>
+                    <p>Highest quality product & support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Create Viral Clips?</h2>
+            <p>Join thousands of podcasters who are growing their audience with PodClip</p>
+            <div class="cta-buttons">
+                <button class="cta-button primary large">
+                    Start Free Trial <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="cta-button secondary large">
+                    <i class="fas fa-calendar"></i> Schedule Demo
+                </button>
+            </div>
+            <p class="cta-note">No credit card required • 14-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">
+                    <i class="fas fa-podcast"></i>
+                    <span>PodClip</span>
+                </div>
+                <p>Transform your podcasts into viral clips with AI-powered technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#examples">Examples</a>
+                <a href="#">API</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PodClip. All rights reserved. Made with ❤️ by Vishal, Jatin, Rishabh G & Rishabh S</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Welcome Back!</h2>
+            <p class="modal-subtitle">Login to continue creating viral clips</p>
+            <form onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <div class="divider">OR</div>
+            <button class="google-btn" onclick="handleGoogleLogin()">
+                <i class="fab fa-google"></i>
+                Continue with Google
+            </button>
+            <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
